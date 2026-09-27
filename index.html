@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مراجعة الامتحان - تدريس الألماني</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf7f0;
+  --ink:#20303f;
+  --ink-soft:#4a5a68;
+  --accent:#1f5c53;
+  --accent-2:#b5893a;
+  --line:#d9d0bd;
+  --card:#ffffff;
+  --tag-bg:#eef2ee;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#181c1a;
+    --ink:#eef1ee;
+    --ink-soft:#aeb8b3;
+    --accent:#5fbfa8;
+    --accent-2:#e0b563;
+    --line:#3a413c;
+    --card:#20241f;
+    --tag-bg:#26302a;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#181c1a;
+  --ink:#eef1ee;
+  --ink-soft:#aeb8b3;
+  --accent:#5fbfa8;
+  --accent-2:#e0b563;
+  --line:#3a413c;
+  --card:#20241f;
+  --tag-bg:#26302a;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Tajawal',sans-serif;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding:2.2rem 1.4rem 4rem;}
+
+header.hero{
+  border-bottom:3px solid var(--accent);
+  padding-bottom:1.4rem;
+  margin-bottom:2.2rem;
+}
+header.hero .kicker{
+  font-family:'Cairo',sans-serif;
+  color:var(--accent-2);
+  font-weight:600;
+  font-size:0.95rem;
+  margin-bottom:0.4rem;
+}
+header.hero h1{
+  font-family:'Cairo',sans-serif;
+  font-weight:800;
+  font-size:clamp(1.6rem,4.5vw,2.3rem);
+  color:var(--ink);
+}
+header.hero p{
+  color:var(--ink-soft);
+  margin-top:0.5rem;
+  font-size:1rem;
+}
+
+nav.toc{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  margin-bottom:2.6rem;
+}
+nav.toc a{
+  text-decoration:none;
+  color:var(--ink);
+  background:var(--tag-bg);
+  border:1px solid var(--line);
+  padding:0.4rem 0.9rem;
+  border-radius:99px;
+  font-size:0.85rem;
+  transition:background .15s ease;
+}
+nav.toc a:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+section{margin-bottom:2.6rem;}
+section .num{
+  font-family:'Cairo',sans-serif;
+  font-weight:800;
+  color:var(--accent);
+  font-size:1rem;
+  letter-spacing:0.03em;
+}
+section h2{
+  font-family:'Cairo',sans-serif;
+  font-weight:800;
+  font-size:1.35rem;
+  margin:0.2rem 0 1rem;
+  color:var(--ink);
+  border-inline-start:5px solid var(--accent);
+  padding-inline-start:0.7rem;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:1.1rem 1.3rem;
+  margin-bottom:0.9rem;
+}
+.card h3{
+  font-family:'Cairo',sans-serif;
+  font-size:1.02rem;
+  font-weight:700;
+  margin-bottom:0.35rem;
+  color:var(--ink);
+}
+.card p{color:var(--ink-soft);font-size:0.95rem;}
+.de{
+  color:var(--accent-2);
+  font-weight:600;
+  font-style:italic;
+  unicode-bidi:isolate;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  font-size:0.92rem;
+}
+table caption{display:none;}
+th,td{
+  padding:0.65rem 0.8rem;
+  border-bottom:1px solid var(--line);
+  text-align:right;
+  vertical-align:top;
+}
+th{
+  background:var(--tag-bg);
+  font-family:'Cairo',sans-serif;
+  font-weight:700;
+  color:var(--ink);
+}
+tr:last-child td{border-bottom:none;}
+.table-scroll{overflow-x:auto;border-radius:10px;}
+
+.split{display:grid;grid-template-columns:1fr;gap:0.9rem;}
+@media(min-width:640px){.split{grid-template-columns:1fr 1fr;}}
+
+.typ{
+  border-radius:10px;
+  padding:1rem 1.2rem;
+  border:1px solid var(--line);
+}
+.typ.now{background:color-mix(in srgb, var(--accent) 10%, var(--card));}
+.typ.later{background:color-mix(in srgb, var(--accent-2) 12%, var(--card));}
+.typ h3{font-family:'Cairo',sans-serif;font-weight:800;margin-bottom:0.5rem;}
+.typ ul{padding-inline-start:1.2rem;color:var(--ink-soft);font-size:0.93rem;}
+.typ li{margin-bottom:0.3rem;}
+
+blockquote{
+  border-inline-start:4px solid var(--accent-2);
+  background:var(--tag-bg);
+  padding:0.8rem 1rem;
+  border-radius:6px;
+  font-size:0.92rem;
+  color:var(--ink);
+  margin:0.8rem 0;
+}
+
+.tip{
+  background:linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 14%, var(--card)), var(--card));
+  border:1px solid var(--accent-2);
+  border-radius:10px;
+  padding:1rem 1.2rem;
+  font-size:0.95rem;
+}
+.tip strong{color:var(--accent-2);}
+
+.vocab-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:0.6rem;
+}
+.vocab-item{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:0.6rem 0.9rem;
+  display:flex;
+  justify-content:space-between;
+  gap:0.6rem;
+  font-size:0.9rem;
+}
+.vocab-item .w{color:var(--accent-2);font-weight:700;unicode-bidi:isolate;text-align:left;}
+.vocab-item .a{color:var(--ink);}
+
+footer{
+  text-align:center;
+  color:var(--ink-soft);
+  font-size:0.85rem;
+  margin-top:3rem;
+  padding-top:1.4rem;
+  border-top:1px solid var(--line);
+}
+
+@media print{
+  nav.toc{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">مراجعة قبل الامتحان</div>
+    <h1>تدريس اللغة الألمانية — ورقة مراجعة</h1>
+    <p>المفردات · تصحيح الأخطاء والفيدباك · التعامل مع السلوكيات الصعبة</p>
+  </header>
+
+  <nav class="toc">
+    <a href="#s1">١. صعوبات المفردات</a>
+    <a href="#s2">٢. مبادئ التدريس</a>
+    <a href="#s3">٣. أنشطة المفردات</a>
+    <a href="#s4">٤. أنشطة القواعد</a>
+    <a href="#s5">٥. تصحيح الأخطاء</a>
+    <a href="#s6">٦. الفيدباك</a>
+    <a href="#s7">٧. السلوكيات الصعبة</a>
+    <a href="#s8">٨. قاموس الكلمات</a>
+  </nav>
+
+  <section id="s1">
+    <div class="num">01</div>
+    <h2>صعوبات تعلم المفردات</h2>
+    <div class="split">
+      <div class="card"><h3><span class="de">Ausspracheprobleme</span></h3><p>مشاكل نطق حروف زي ö, ü, ch, r</p></div>
+      <div class="card"><h3><span class="de">Schreibweise</span></h3><p>كتابة غير منتظمة أو حروف مضاعفة</p></div>
+      <div class="card"><h3><span class="de">Grammatische Zuordnung</span></h3><p>مشكلة الأدوات der/die/das، الجمع، تصريف الأفعال</p></div>
+      <div class="card"><h3><span class="de">Falsche Freunde</span></h3><p>كلمات شكلها زي لغتهم الأم بس معناها مختلف</p></div>
+      <div class="card"><h3>النسيان</h3><p>الطلاب بينسوا الكلمة لو ما اتكررتش (<span class="de">wiederholen</span>)</p></div>
+    </div>
+  </section>
+
+  <section id="s2">
+    <div class="num">02</div>
+    <h2>الخمس مبادئ لتدريس المفردات</h2>
+    <div class="table-scroll">
+    <table>
+      <tr><th style="width:5rem">#</th><th>المبدأ</th></tr>
+      <tr><td><span class="de">Tipp 1</span></td><td>يفهموا الكلمة جوه موقف حقيقي أو نص أو حوار</td></tr>
+      <tr><td><span class="de">Tipp 2</span></td><td>تعلّم نشط: يكتشفوا ويشرحوا ويستخدموا — مش بس يسمعوا</td></tr>
+      <tr><td><span class="de">Tipp 3</span></td><td>تكرار الكلمة في سياقات مختلفة</td></tr>
+      <tr><td><span class="de">Tipp 4</span></td><td>تعلّم الكلمات في تركيبات (<span class="de">Chunks</span>) مش لوحدها</td></tr>
+      <tr><td><span class="de">Tipp 5</span></td><td>تعلّم ذاتي: كروت، خرائط ذهنية، ترابطات، تطبيقات</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section id="s3">
+    <div class="num">03</div>
+    <h2>أنشطة المفردات</h2>
+    <div class="table-scroll">
+    <table>
+      <tr><th style="width:2.5rem">#</th><th>النشاط</th><th>الفكرة</th></tr>
+      <tr><td>1</td><td><span class="de">Was gehört zusammen?</span></td><td>ربط صور بمسميات عامة</td></tr>
+      <tr><td>2</td><td><span class="de">Wortnetz bauen</span></td><td>شبكة كلمات حول كلمة مركزية زي "Essen"</td></tr>
+      <tr><td>3</td><td><span class="de">Wettbewerb</span></td><td>شرح كلمة والباقي يخمّنوا</td></tr>
+      <tr><td>4</td><td><span class="de">Sortieren & Begründen</span></td><td>تصنيف صحي/غير صحي + تبرير</td></tr>
+      <tr><td>5</td><td><span class="de">Ich mag – Ich mag nicht</span></td><td>رد فعل بالوقوف/القعود</td></tr>
+      <tr><td>6</td><td><span class="de">Memory – Wort & Bild</span></td><td>مطابقة كلمة بصورة</td></tr>
+      <tr><td>7</td><td><span class="de">Einkaufsliste</span></td><td>"Ich kaufe Brot, Milch und Äpfel"</td></tr>
+      <tr><td>8</td><td><span class="de">Was fehlt?</span></td><td>تحديد الصورة الناقصة</td></tr>
+      <tr><td>9</td><td><span class="de">Ketten-Spiel</span></td><td>جملة بتطول: "...Brot und Käse"</td></tr>
+      <tr><td>10</td><td><span class="de">Menü erstellen</span></td><td>مقبلات / طبق رئيسي / مشروب</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section id="s4">
+    <div class="num">04</div>
+    <h2>أنشطة القواعد</h2>
+    <div class="table-scroll">
+    <table>
+      <tr><th style="width:2.5rem">#</th><th>الموضوع</th><th>مثال</th></tr>
+      <tr><td>1</td><td><span class="de">Artikel</span> (der/die/das)</td><td>يجروا للركن الصح</td></tr>
+      <tr><td>2</td><td><span class="de">Präsens</span></td><td>"Er arbeitet heute"</td></tr>
+      <tr><td>3</td><td><span class="de">Satzstellung</span></td><td>ترتيب كلمات مبعثرة</td></tr>
+      <tr><td>4</td><td><span class="de">W-Fragen</span></td><td>"Wo wohnst du?" → "Ich wohne in Kairo"</td></tr>
+      <tr><td>5</td><td><span class="de">Akkusativ</span></td><td>"Ich sehe einen Hund"</td></tr>
+      <tr><td>6</td><td><span class="de">Dativ</span> (mit/zu/bei)</td><td>"Mit wem lernst du Deutsch?"</td></tr>
+      <tr><td>7</td><td><span class="de">Modalverben</span></td><td>"Ich möchte reisen"</td></tr>
+      <tr><td>8</td><td><span class="de">Trennbare Verben</span></td><td>an|kommen → "Der Zug kommt an"</td></tr>
+      <tr><td>9</td><td><span class="de">Adjektive</span></td><td>"Das Auto ist teuer" / "günstiger"</td></tr>
+      <tr><td>10</td><td><span class="de">weil</span>-Sätze</td><td>"Ich lerne Deutsch, weil er krank ist"</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section id="s5">
+    <div class="num">05</div>
+    <h2>تصحيح الأخطاء — إمتى نصحح؟</h2>
+    <div class="split">
+      <div class="typ now">
+        <h3>✅ تصحيح فوري</h3>
+        <ul>
+          <li>عناصر لغوية جديدة</li>
+          <li>تدريبات نطق / قواعد / مفردات</li>
+          <li>الخطأ يعطّل الفهم</li>
+          <li>مع المبتدئين (خطر ترسّخ نمط غلط)</li>
+        </ul>
+      </div>
+      <div class="typ later">
+        <h3>⏳ نستنى لآخر الحصة</h3>
+        <ul>
+          <li>التركيز على الطلاقة/التواصل</li>
+          <li>مناقشات، لعب أدوار، تواصل حر</li>
+          <li>التواصل ماشي بطلاقة</li>
+          <li>مع المتقدمين اللي يصححوا لنفسهم</li>
+        </ul>
+      </div>
+    </div>
+    <h3 style="font-family:'Cairo',sans-serif;margin:1.4rem 0 0.6rem;">إزاي نصحح؟</h3>
+    <blockquote>
+      الطالب: "Er geht in Kino" — المدرس: "Ah, er geht <strong>ins</strong> Kino؟"<br>
+      <small style="color:var(--ink-soft)">(إعادة الجملة صح من غير ما تقول "غلط" — أو من خلال إشارات غير لفظية)</small>
+    </blockquote>
+    <div class="card">
+      <p>خد ملاحظات وقت النشاط وناقشها بعدين · استخدم فئات أخطاء (ترتيب/حالة إعرابية/حروف جر) · شجّع التصحيح الذاتي أو تصحيح الزملاء · وثّق الفيدباك (واتساب/سبورة/ورقيًا) · وضّح إن مش كل الأخطاء تتصحح</p>
+    </div>
+  </section>
+
+  <section id="s6">
+    <div class="num">06</div>
+    <h2>الفيدباك — 3 مراحل</h2>
+    <div class="card"><h3>1. إيجابي / مدح أو هدف</h3></div>
+    <div class="card"><h3>2. أخطاء / مشاكل / نقاط ضعف</h3></div>
+    <div class="card"><h3>3. إيجابي أو خطة حل</h3></div>
+    <div class="tip"><strong>مهم:</strong> خلي بالك من نبرتك واختيار كلماتك — الهدف إنه يستفيد مش يتحرج.</div>
+  </section>
+
+  <section id="s7">
+    <div class="num">07</div>
+    <h2>التعامل مع السلوكيات الصعبة</h2>
+    <div class="table-scroll">
+    <table>
+      <tr><th>المشكلة</th><th>الحل</th></tr>
+      <tr><td><span class="de">Zu laut / Unruhe</span></td><td>"Stop–Plan–Go"، تكرار القاعدة، Timer</td></tr>
+      <tr><td><span class="de">Dominanter Lernender</span></td><td>تحديد وقت الكلام "Danke, jetzt X"، توزيع أدوار</td></tr>
+      <tr><td><span class="de">Leiser Lernender</span></td><td>Satzstarter، يتكلم في أزواج الأول</td></tr>
+      <tr><td><span class="de">Zu viel Muttersprache</span></td><td>Mini-Regel واضحة</td></tr>
+      <tr><td><span class="de">Zeitdruck</span></td><td>تقصير Sichern، الحفاظ على Anwenden، واجب واضح</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section id="s8">
+    <div class="num">08</div>
+    <h2>قاموس أهم الكلمات</h2>
+    <div class="vocab-grid">
+      <div class="vocab-item"><span class="w">der Wortschatz</span><span class="a">المفردات</span></div>
+      <div class="vocab-item"><span class="w">die Aussprache</span><span class="a">النطق</span></div>
+      <div class="vocab-item"><span class="w">der/die Lernende</span><span class="a">المتعلم</span></div>
+      <div class="vocab-item"><span class="w">wiederholen</span><span class="a">يكرر</span></div>
+      <div class="vocab-item"><span class="w">die Flüssigkeit</span><span class="a">الطلاقة</span></div>
+      <div class="vocab-item"><span class="w">das Rollenspiel</span><span class="a">لعب الأدوار</span></div>
+      <div class="vocab-item"><span class="w">fortgeschritten</span><span class="a">متقدم</span></div>
+      <div class="vocab-item"><span class="w">der/die Anfänger:in</span><span class="a">مبتدئ</span></div>
+      <div class="vocab-item"><span class="w">unterstützend</span><span class="a">داعم</span></div>
+      <div class="vocab-item"><span class="w">die Redezeit</span><span class="a">وقت الكلام</span></div>
+      <div class="vocab-item"><span class="w">dominant</span><span class="a">مسيطر</span></div>
+      <div class="vocab-item"><span class="w">leise</span><span class="a">هادي</span></div>
+      <div class="vocab-item"><span class="w">die Muttersprache</span><span class="a">اللغة الأم</span></div>
+      <div class="vocab-item"><span class="w">der Zeitdruck</span><span class="a">ضغط الوقت</span></div>
+      <div class="vocab-item"><span class="w">die Hausaufgabe</span><span class="a">الواجب</span></div>
+      <div class="vocab-item"><span class="w">festigen</span><span class="a">يرسّخ</span></div>
+      <div class="vocab-item"><span class="w">anwenden</span><span class="a">يطبّق</span></div>
+      <div class="vocab-item"><span class="w">blamieren</span><span class="a">يحرج</span></div>
+      <div class="vocab-item"><span class="w">profitieren</span><span class="a">يستفيد</span></div>
+    </div>
+  </section>
+
+  <footer>بالتوفيق في الامتحان 💪</footer>
+
+</div>
+</body>
+</html>
